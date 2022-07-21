@@ -9,5 +9,6 @@
     "@nomiclabs/hardhat-waffle": "^2.0.3",
     "chai": "^4.3.6",
     "hardhat": "^2.9.3"
-  }
+  },
+  "version": "0.0.1"
 }
