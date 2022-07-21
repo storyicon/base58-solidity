@@ -1,6 +1,9 @@
 # Base58 Solidity
 
-The first complete implementation of Base58 encoding in Solidity. This algorithm was migrated from github.com/mr-tron/base58 to solidity. Note that it is not yet optimized for gas, so it is recommended to use it only in the view/pure function.
+![Base58-Solidity](./docs/images/base58-solidity.png)
+
+
+The first complete implementation of Base58 encoding in Solidity.
 
 
 ## Contribution
