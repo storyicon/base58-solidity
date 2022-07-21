@@ -13,3 +13,7 @@ from anyone on the internet, and are grateful for even the smallest of fixes!
 
 If you'd like to contribute to this project, please fork, fix, commit and send a pull request
 for me to review and merge into the main code base.
+
+## License
+
+This project is released under the MIT License.
