@@ -11,6 +11,10 @@
     "serialize"
   ],
   "author": "storyicon@foxmail.com",
+  "repository": {
+		"type": "git",
+		"url": "https://github.com/storyicon/base58-solidity"
+	},
   "license": "MIT",
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.5",

@@ -5,6 +5,8 @@
 
 The first complete implementation of Base58 encode/decode in Solidity.
 
+**Github**: [https://github.com/storyicon/base58-solidity](https://github.com/storyicon/base58-solidity)
+
 ## Installation
 
 ```bash
