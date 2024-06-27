@@ -22,31 +22,31 @@ library Base58 {
     * @param data_ raw data, passed in as bytes.
     * @return base58 encoded data_, returned as bytes.
     */
-    function encode(bytes memory data_) public pure returns (bytes memory);
+    function encode(bytes memory data_) internal pure returns (bytes memory);
     /**
     * @notice decode is used to decode the given string in base58 standard.
     * @param data_ data encoded with base58, passed in as bytes.
     * @return raw data, returned as bytes.
     */
-    function decode(bytes memory data_) public pure returns (bytes memory)
+    function decode(bytes memory data_) internal pure returns (bytes memory)
     /**
     * @notice encodeToString is used to encode the given byte in base58 standard.
     * @param data_ raw data, passed in as bytes.
     * @return base58 encoded data_, returned as a string.
     */
-    function encodeToString(bytes memory data_) public pure returns (string memory)
+    function encodeToString(bytes memory data_) internal pure returns (string memory)
     /**
     * @notice encodeFromString is used to encode the given string in base58 standard.
     * @param data_ raw data, passed in as a string.
     * @return base58 encoded data_, returned as bytes.
     */
-    function encodeFromString(string memory data_) public pure returns (bytes memory)
+    function encodeFromString(string memory data_) internal pure returns (bytes memory)
     /**
     * @notice decode is used to decode the given string in base58 standard.
     * @param data_ data encoded with base58, passed in as string.
     * @return raw data, returned as bytes.
     */
-    function decodeFromString(string memory data_) public pure returns (bytes memory)
+    function decodeFromString(string memory data_) internal pure returns (bytes memory)
 }
 ```
 
@@ -56,7 +56,7 @@ library Base58 {
 
 ```solidity
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.7;
+pragma solidity ^0.8.20;
 
 import "base58-solidity/contracts/Base58.sol";
 
