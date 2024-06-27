@@ -2,14 +2,13 @@
 // so feel free to add new ones.
 
 // Hardhat tests are normally written with Mocha and Chai.
-
-// We import Chai to use its asserting functions here.
 const { expect } = require("chai");
 
 // We use `loadFixture` to share common setups (or fixtures) between tests.
 // Using this simplifies your tests and makes them run faster, by taking
 // advantage of Hardhat Network's snapshot functionality.
-const { loadFixture } = require("@nomicfoundation/hardhat-network-helpers");
+const { loadFixture } = require("@nomicfoundation/hardhat-toolbox/network-helpers");
+const { ethers} = require("hardhat");
 
 // `describe` is a Mocha function that allows you to organize your tests.
 // Having your tests organized makes debugging them easier. All Mocha
@@ -18,14 +17,14 @@ const { loadFixture } = require("@nomicfoundation/hardhat-network-helpers");
 // `describe` receives the name of a section of your test suite, and a
 // callback. The callback must define the tests of that section. This callback
 // can't be an async function.
-describe("Base58", function () {
+describe("Base58", () => {
     // We define a fixture to reuse the same setup in every test. We use
     // loadFixture to run this setup once, snapshot that state, and reset Hardhat
     // Network to that snapshopt in every test.
     async function deployBase58() {
         // Get the ContractFactory and Signers here.
         const contractFactory = await ethers.getContractFactory(
-            "contracts/Base58.sol:Base58"
+            "contracts/Base58Helper.sol:Base58Helper"
         );
         const [owner] = await ethers.getSigners();
 
@@ -34,14 +33,14 @@ describe("Base58", function () {
         // mined.
         const contract = await contractFactory.deploy();
 
-        await contract.deployed();
+        await contract.waitForDeployment();
 
         // Fixtures can return anything you consider useful for your tests
         return { contractFactory, contract, owner };
     }
 
     // You can nest describe calls to create subsections.
-    describe("Encode/Decode", function () {
+    describe("Encode/Decode", () => {
         const testCases = [
             {
                 input: "0x52fdfc072182654f163f5f0f9a621d729566c74d10037c4d7bbb0407d1e2c649",
@@ -807,7 +806,7 @@ describe("Base58", function () {
                 output: "Ru8wQDcPgkiU3Jo3WnAt4cpHyjTRLXYcBcNpiKwapEhQGbef6vRxFDaTA5htW6WXw2N9Awm1fWPrSMC2vN2qmjn4jr5aA1grgpDKL5oa9C8bUvtHhVbQqimF4H5naQBX37kqGSF",
             },
         ];
-        it("Should able to encode", async function () {
+        it("Should able to encode", async () => {
             const { contract, owner } = await loadFixture(deployBase58);
             for (const item of testCases) {
                 expect(await contract.encodeToString(item.input)).to.equal(
@@ -815,7 +814,7 @@ describe("Base58", function () {
                 );
             }
         });
-        it("Should able to decode", async function () {
+        it("Should able to decode", async () => {
             const { contract, owner } = await loadFixture(deployBase58);
             for (const item of testCases) {
                 expect(await contract.decodeFromString(item.output)).to.equal(
