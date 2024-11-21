@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.7;
+pragma solidity ^0.8.20;
 
 /**
  * @title Base58
@@ -16,7 +16,7 @@ library Base58 {
      * @param data_ raw data, passed in as bytes.
      * @return base58 encoded data_, returned as bytes.
      */
-    function encode(bytes memory data_) public pure returns (bytes memory) {
+    function encode(bytes memory data_) internal pure returns (bytes memory) {
         unchecked {
             uint256 size = data_.length;
             uint256 zeroCount;
@@ -54,7 +54,7 @@ library Base58 {
      * @param data_ data encoded with base58, passed in as bytes.
      * @return raw data, returned as bytes.
      */
-    function decode(bytes memory data_) public pure returns (bytes memory) {
+    function decode(bytes memory data_) internal pure returns (bytes memory) {
         unchecked {
             uint256 zero = 49;
             uint256 b58sz = data_.length;
@@ -108,7 +108,7 @@ library Base58 {
      * @param data_ raw data, passed in as bytes.
      * @return base58 encoded data_, returned as a string.
      */
-    function encodeToString(bytes memory data_) public pure returns (string memory) {
+    function encodeToString(bytes memory data_) internal pure returns (string memory) {
         return string(encode(data_));
     }
 
@@ -118,7 +118,7 @@ library Base58 {
      * @return base58 encoded data_, returned as bytes.
      */
     function encodeFromString(string memory data_)
-        public
+        internal
         pure
         returns (bytes memory)
     {
@@ -131,7 +131,7 @@ library Base58 {
      * @return raw data, returned as bytes.
      */
     function decodeFromString(string memory data_)
-        public
+        internal
         pure
         returns (bytes memory)
     {
@@ -149,7 +149,7 @@ library Base58 {
         bytes memory data_,
         uint256 start_,
         uint256 end_
-    ) public pure returns (bytes memory) {
+    ) internal pure returns (bytes memory) {
         unchecked {
             bytes memory ret = new bytes(end_ - start_);
             for (uint256 i = 0; i < end_ - start_; i++) {
@@ -166,7 +166,7 @@ library Base58 {
      * @return index, and whether the search was successful.
      */
     function indexOf(bytes memory data_, bytes1 char_)
-        public
+        internal
         pure
         returns (uint256, bool)
     {
